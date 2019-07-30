@@ -3,23 +3,27 @@ import './App.css';
 import Overlay from '../../Components/Overlay/Overlay';
 import SignIn from "../../Components/SignIn/SignIn";
 import SignUp from "../../Components/SignUp/SignUp";
+import classNames from 'classnames';
 
 class App extends React.Component {
   constructor(props) {
       super(props);
 
-      this.containerRef = React.createRef();
+      this.state = {
+          isActive: false,
+      }
   }
 
-  toggleOverlay(left) {
-      const container = this.containerRef.current.classList;
-      left ? container.add('right-panel-active') : container.remove('right-panel-active');
+  toggleActivity = () => {
+      this.setState({isActive: !this.state.isActive});
   }
 
   render() {
+      const { isActive } = this.state;
+
       return (
-          <div className="container" ref={ this.containerRef }>
-              <Overlay toggleOverlay={(left) => this.toggleOverlay(left)}/>
+          <div className={classNames("container", {"right-panel-active": isActive})}>
+              <Overlay toggleOverlay={this.toggleActivity}/>
               <SignIn/>
               <SignUp/>
           </div>

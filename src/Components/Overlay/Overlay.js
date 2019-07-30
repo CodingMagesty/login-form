@@ -4,6 +4,7 @@ import './Overlay.css';
 class Overlay extends React.Component {
     render() {
         const { toggleOverlay } = this.props;
+
         return (
             <div className='overlay-container'>
                 <div className='overlay'>
@@ -14,8 +15,7 @@ class Overlay extends React.Component {
                         <p>
                             To keep connected with us please login with your personal info
                         </p>
-                        <button className='ghost' id='signIn'
-                                onClick={() => toggleOverlay(false)}>
+                        <button className='ghost' id='signIn' onClick={() => toggleOverlay()}>
                             Sign in
                         </button>
                     </div>
@@ -26,15 +26,14 @@ class Overlay extends React.Component {
                         <p>
                             Enter your personal details and start journey with us
                         </p>
-                        <button className='ghost' id='signUp'
-                                onClick={() => toggleOverlay(true)}>
+                        <button className='ghost' id='signUp' onClick={() => toggleOverlay()}>
                             Sign up
                         </button>
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 }
 
 export default Overlay;
